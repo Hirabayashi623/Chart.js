@@ -1,0 +1,73 @@
+<!DOCTYPE>
+
+<html>
+<head>
+	<meta charset='utf-8'>
+	<title>My Chart</title>
+
+	<script src='/js/chart_2-7-2.min.js'></script>
+</head>
+<body>
+	<canvas id="my_chart">
+		Canvas is not supported...
+	</canvas>
+
+	<script>
+		(function(){
+			'use strict';
+
+			var type = 'line';
+			var data = {
+				labels: [2010, 2011, 2012, 2013],
+				datasets: [{
+					label: '@taguchi',
+					data : [120, 300, 200, 210]
+				},{
+					label: '@fkoji',
+					data : [180, 250, 320, 500]
+				}]
+			};
+			// グラフの設定
+			var options = {
+				scales: {
+					yAxes: [{
+						ticks: {
+							// min: 0,
+							// max:400,
+							suggestedMin: 0,
+							suggestedMax: 400,
+							stepSize: 100,
+							// 単位を付ける
+							callback: function(value, index, values){
+								return 'JPY' + value;
+							}
+						}
+					}]
+				},
+				title: {
+					display: true,
+					text: 'This is title',
+					fontSize: 18,
+					position: 'left',
+				},
+				animation:{
+					// アニメーションの実行時間
+					duration: 0,
+				},
+				// 凡例
+				legend: {
+					position: 'right',
+					// 非表示
+					// display: false
+				}
+			};
+			var ctx = document.getElementById('my_chart').getContext('2d');
+			var myChart = new Chart(ctx, {
+				type   : type,
+				data   : data,
+				options: options,
+			})
+		})();
+	</script>
+</body>
+</html>

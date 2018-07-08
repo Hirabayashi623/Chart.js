@@ -1,0 +1,57 @@
+<!DOCTYPE>
+
+<html>
+<head>
+	<meta charset='utf-8'>
+	<title>My Chart</title>
+
+	<script src='/js/chart_2-7-2.min.js'></script>
+</head>
+<body>
+	<canvas id="my_chart">
+		Canvas is not supported...
+	</canvas>
+
+	<script>
+		(function(){
+			'use strict';
+
+			// グラフの種類
+			var type = 'radar';
+			// グラフのデータ
+			var data = {
+				// ラベル（軸に表示される文字列）
+				labels: ['PHP', 'Ruby', 'Python', 'JacaScript', 'HTML'],
+				datasets: [{
+					label: '@taguchi',
+					data: [40, 50, 70, 30, 80],
+					backgroundColor: 'rgba(255, 0, 0, 0.3)',
+
+				},{
+					label: '@fkoji',
+					data: [90, 62, 34, 80, 48],
+					backgroundColor: 'rgba(0, 0, 255, 0.3)',
+
+				}]
+			};
+			// グラフの設定
+			var options = {
+				scale: {
+					ticks: {
+						beginAtZero: true,
+						// min: 0,
+						max: 100,
+					}
+				}
+			}
+
+			var ctx = document.getElementById('my_chart').getContext('2d');
+			var myChart = new Chart(ctx, {
+				type   : type,
+				data   : data,
+				options: options,
+			})
+		})();
+	</script>
+</body>
+</html>
